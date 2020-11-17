@@ -1,24 +1,87 @@
 <template>
-    <div class="images">
-        <br/><br/><br/><br/>
+  <div>
+      <div>
+    
+    <section class="shelf">
+    <div class="container">
+        <header>
+            <h2>Kitap</h2>
+            <a href="/Sectiklerimiz/Kitap">TÜMÜNÜ GÖRÜNTÜLE</a>
+        </header>
+  <ul>
+   
+   <li v-for="product in products" v-bind:key="product"> 
+     
+        <div class="column">
+<div class="cell" onclick="productClick(this)" data-id="1263878" data-name="Koronadan Korunmak M&#252;mk&#252;n" data-brand="Alfa Yayıncılık" data-category="Kitap/Eğitim Başvuru/Sağlık/Beden Sağlığı" data-sku="0001895541001" >
+    <div class="content">
+        <a title="Koronadan Korunmak M&#252;mk&#252;n ">
+            <figure>
+               
+    <nuxt-link v-bind:to="product.name" :product="product"><img class="lazyload" :src="product.img"/></nuxt-link>                 
+     <div class="p-info"></div>
+            </figure>
+        </a>
+        <a title="Koronadan Korunmak M&#252;mk&#252;n" href="/Kitap/Koronadan-Korunmak-Mumkun/Dr-Umit-Aktas/Egitim-Basvuru/Saglik/Beden-Sagligi/urunno=0001895541001 " class="item-name">
+        <ul class="rate ">
+        </ul>
         
+            <h3 class="ellipsis">{{product.name}}</h3>
+        </a>
+        <hr>
+ <a href="/Yazar/dr--umit-aktas/s=325030" class="who"></a>     {{product.author}}   <div class="media-type">
+{{product.kapak}}       </div>
+        <div class="media-type">
+                <a href="/Yayinevi/alfa-yayincilik/s=436" class="who mb10">{{product.publisher}}</a>
+        </div>
+            <span class="old-price">{{product.pricewd}} TL</span>
+            <span class="discount-category">%{{product.discount}}</span>
+            <span class="price">{{product.price}} TL </span>
+
+    </div>
+    </div>
+</div>  
+
+</li>
+  
+</ul>
+</div>
+</section>
+
+  </div>
+    <div class="images">
+        <br/><br/><br/><br/>       
         <img style="margin-left:80px" src="https://i.dr.com.tr/pimages/Content/Uploads/BannerFiles/dr/image-19-06-20-02-04.jpeg"/>
-        <img style="margin-left:20px" src="https://i.dr.com.tr/pimages/Content/Uploads/BannerFiles/dr/1020_d_u_x_364x178_sizin_icin_sectiklerimiz_rev.jpg"/>
+        <nuxt-link to="/Sectiklerimiz"><img style="margin-left:20px" src="https://i.dr.com.tr/pimages/Content/Uploads/BannerFiles/dr/1020_d_u_x_364x178_sizin_icin_sectiklerimiz_rev.jpg"/></nuxt-link>
         <img style="margin-left:20px" src="https://i.dr.com.tr/pimages/Content/Uploads/BannerFiles/dr/thumbnail_0920_d_t_x_364x178_tum_kitap_kampanyalari_v3.jpg"/>
     </div>
+  </div>   
 </template>
 
 <script>
-//import Slider from '../src/components/Slider';
-
 export default {
-  components: {
-    //Slider
-  },
+    components:{
+
+    },
+    async fetch(){
+      this.products=await fetch(
+      'https://my-json-server.typicode.com/rabiaterzi/DR_Vue/products'
+    ).then((res)=>res.json())
+    },   
+    data(){
+      return{      
+          products:[]
+      }
+    },
+    
 };
 </script>
 
 <style scoped>
+@import "../src/css/dynamic-banner.css";
+@import "../src/css/dr-custom.css";
+@import "../src/css/style.css";
+
   .images{
     margin-left: 100px;
   }

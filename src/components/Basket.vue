@@ -1,5 +1,5 @@
 <template>
-    <div class="container" style="margin-top:40px">
+    <div class="container" style="margin-top:40px;width:100%">
                     <div class="row">
                             <div class="container">
     </div>     
@@ -9,7 +9,7 @@
 
                         <div class="basketContentFrame">
 
-                            <div class="basketLeftFrame col-md-7 col-lg-8" style="float:left;">
+                            <div class="basketLeftFrame col-md-7 col-lg-8" style="float:left;width:750px">
 
                                 <div class="basketProductSummary">
 
@@ -173,6 +173,10 @@
 @import "../css/basket-page.css";
 @import "../css/form-ui.css";
 @import "../css/order-summary.css";
-
+.container{
+    position: absolute;
+    top: 100px;
+    left: 200px;
+}
 
 </style>
